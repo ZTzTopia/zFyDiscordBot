@@ -1,0 +1,19 @@
+{
+	"token": "our Bot Tokken Goes Here :D", 
+	"prefix": ";;",
+	"owner": "436171327968116738",
+	"green": 1376000,
+	"red": 16711680,
+	"yellow": 16776960,
+	"orange": 16755200,
+	"viola": 16711935,
+	"blue": 255,
+	"black": 1,
+	"blue2": 65535,
+	"agree": "<:agree:437835753792208896>",
+	"disagree": "<:disagree:437835754446520350>",
+	"online": "<:online:437835753829957633>",
+	"offline": "<:offline:437835753825894401>",
+	"idle": "<:away:437835753960112140>",
+	"dnd": "<:dnd:437835753398075405>"
+}
