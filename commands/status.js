@@ -3,7 +3,7 @@ var config = require('../config.json');
 
 const validStatuses = [
         {
-            internal: 'online',
+            internal: 'online' && 'on',
             display: 'Online',
             emoji: ':zap:'
         },
@@ -18,7 +18,7 @@ const validStatuses = [
             emoji: ':mute:'
         },
         {
-            internal: 'invisible',
+            internal: 'invisible' && 'invis' && 'off',
             display: 'Invisible',
             emoji: ':ghost:'
         }
