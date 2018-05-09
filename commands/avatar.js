@@ -8,9 +8,8 @@ var user = member.user;
 
 var info = new Discord.RichEmbed()
     .setAuthor(user.username + '#' + user.discriminator, user.avatarURL)
-    .setDescription('User Information')
     .setColor(member.displayHexColor)
-    .addField('Avatar Link', '[Here](' + user.avatarURL + ')', true)
+    .addField('Avatar Link ' + user.username, '[Here](' + user.avatarURL + ')', true)
 
 msg.channel.send({ embed: info });
 }
