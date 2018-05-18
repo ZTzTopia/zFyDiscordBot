@@ -103,7 +103,7 @@ bot.on("guildDelete", (guild) => {
    
    botowner.send(`left ${guild.name} ~ ${bot.guilds.size} Servers`);
    
-   bot.user.setPresence({ game: { name:config.prefix + 'help || ' + bot.guilds.size + ' Servers', type: 3 } });
+   bot.user.setPresence({ game: { name: config.prefix + 'help || ' + bot.guilds.size + ' Servers', type: 3 } });
 })
 
 /*bot.on('message', function (message) {
