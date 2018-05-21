@@ -51,6 +51,6 @@ module.exports.help = {
     type: "Utilities",
     description: "Gets information about a country.",
     format: "`country <countryName>`",
-    example: '`country Indonesia` \n`country malaysia`',
+    example: '`country Indonesia` \n`country Malaysia`',
     require: "None."
 }

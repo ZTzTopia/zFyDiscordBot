@@ -1,9 +1,10 @@
 var Discord = require('discord.js');
 var config = require('../config.json');
+const errors = require('../errors.js');
 
 const validStatuses = [
         {
-            internal: 'online' && 'on',
+            internal: 'online',
             display: 'Online',
             emoji: ':zap:'
         },
@@ -18,7 +19,7 @@ const validStatuses = [
             emoji: ':mute:'
         },
         {
-            internal: 'invisible' && 'invis' && 'off',
+            internal: 'invisible',
             display: 'Invisible',
             emoji: ':ghost:'
         }
@@ -28,25 +29,9 @@ const validStatuses = [
     const validStatusString = validStatuses.map(status => `\`${status.internal}\``).join(', ');
 
 module.exports.run = async (bot, msg, args) => {
-    if (msg.author.id !== config.owner) {
-        let stat  = new Discord.RichEmbed()
-        stat.setColor(msg.guild.me.displayColor)
-        .addField('Error™', "<:disagree:428759831587848192> **" + msg.author.tag + `** Only Owner The Bot Can Use This **Commands**`)
-        .setFooter(`${bot.user.username}#${bot.user.discriminator}™`, bot.user.avatarURL)
-        .setTimestamp();
-        
-        return msg.channel.send({ embed: stat })
-        }
+    if (msg.author.id !== config.owner) return errors.ownerBot(msg);
 
-        if (args.length < 1 || !validStatusRegex.test(args[0])) {
-            let stat  = new Discord.RichEmbed()
-            stat.setColor(msg.guild.me.displayColor)
-            .addField('Error™', "<:disagree:428759831587848192> **" + msg.author.tag + `** Please provide a status to set: ${validStatusString}`)
-            .setFooter(`${bot.user.username}#${bot.user.discriminator}™`, bot.user.avatarURL)
-            .setTimestamp();
-            
-            return msg.channel.send({ embed: stat })
-            }
+        if (args.length < 1 || !validStatusRegex.test(args[0])) return errors.noText2(msg, `Please provide a status to set: ${validStatusString}`);
     
     if (args.length > 1 || validStatusRegex.test(args[0])) {
         const status = validStatuses.find(status => status.internal === args[0]);
@@ -59,9 +44,9 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
     name: "status",
-    type: "Util",
-    description: 'Sets your status to `online`, `idle`, `dnd`, `invisible`.',
+    type: "Owner",
+    description: 'Sets bot status to `online`, `idle`, `dnd`, `invisible`.',
     format: "`status <Status>`",
-    example: '`status dnd` - Bot will change to "dnd"',
+    example: '`status dnd`',
     require: "None."
 }

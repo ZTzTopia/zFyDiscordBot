@@ -56,7 +56,7 @@ if (args.length < 1) return errors.noText(msg, `
             .setTimestamp();
             
             msg.channel.send({ embed: ball2 });
-}, 500);
+}, 800);
 
 }
 

@@ -1,13 +1,12 @@
 var Discord = require('discord.js');
+const errors = require('../errors.js');
 
-module.exports.run = async (bot, msg, args) => {
-if (args.length < 1) {
-  let ball1 = new Discord.RichEmbed()
-  ball1.setColor(msg.guild.me.displayColor)
-  .setDescription("<:disagree:424463051824037899> **" + msg.author.tag + "** Please enter something, Cant read that.")
-  
-  return msg.channel.send({ embed: ball1 });
-}
+module.exports.run = async (bot, msg, args, suffix) => {
+if (args.length < 1) return errors.noText(msg, `
+   **Description**: Spaces out text to look all dramatic n\' stuff.
+   **Format**: \`space <aomountSpace> <text>\` 
+   **Example**: \`space 2 ZTzTopia\`
+`)
 
     let amount = 2;
 
@@ -24,8 +23,8 @@ msg.channel.send(args.join(' '.repeat(amount / 2)).split('').join(' '.repeat(amo
 module.exports.help = {
     name: "space",
     type: "Fun",
-    description: "Spaces out text to look all dramatic n\' stuff",
+    description: "Spaces out text to look all dramatic n\' stuff.",
     format: "`space <aomountSpace> <text>`",
-    example: '`space 2 Hamumu` - Bot Will edit Space "Hamumu" To "H  a  m  u  m  u"',
+    example: '`space 2 ZTzTopia` \n`space ZTzTopia`',
     require: "None."
 }

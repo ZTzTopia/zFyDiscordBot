@@ -5,6 +5,9 @@ module.exports.run = async (bot, msg, args, suffix) => {
     if (args.length < 1) {
         
       urban.random().first(json => {
+
+      console.log(json);
+
       let embed = new Discord.RichEmbed()
       .setTitle(json.word)
       .setThumbnail('https://lh5.googleusercontent.com/-rY97dP0iEo0/AAAAAAAAAAI/AAAAAAAAAGA/xm1HYqJXdMw/s0-c-k-no-ns/photo.jpg')
@@ -14,7 +17,7 @@ module.exports.run = async (bot, msg, args, suffix) => {
       .addField('Current voted:', json.current_vote || 'None')
       .addField('Defid:', json.defid || 'None')
       .addField('Example:', json.example || 'None')
-      .setFooter('Author: ' + json.author)
+      .setFooter('Author: ' + json.author + ', Write On: ' + json.written_on)
      
       return msg.channel.send({embed})
       })
@@ -24,7 +27,9 @@ module.exports.run = async (bot, msg, args, suffix) => {
     let str = args.join(" ")
     
     urban(str).first(json =>{
-    if(!json) return msg.reply('No result found.');
+    if(!json) return msg.reply('No result found.');.0
+
+    console.log(json);
     
     let embed = new Discord.RichEmbed()
      .setTitle(json.word)
@@ -35,8 +40,7 @@ module.exports.run = async (bot, msg, args, suffix) => {
      .addField('Current voted:', json.current_vote || 'None')
      .addField('Defid:', json.defid || 'None')
      .addField('Example:', json.example || 'None')
-     .setFooter('Author: ' + json.author)
-    
+     .setFooter('Author: ' + json.author + ', Write On: ' + json.written_on)    
      msg.channel.send({embed})
        });
   }

@@ -45,8 +45,8 @@ module.exports.run = async (bot, msg, args, suffix) => {
     module.exports.help = {
     name: "createtext",
 	  type: "Moderation",
-    exaple: '`create general`' ,
-    format: "`create <channelName>`",
+    exaple: '`createtext general`' ,
+    format: "`createtext <channelName>`",
     description: "Creates a new text channel with the given name.",
     require: "ManageChannels, Administrator Server Permission"
 }

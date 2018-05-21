@@ -57,6 +57,6 @@ module.exports.help = {
     type: "Fun",
     description: "Converts your text to tiny letters!.",
     format: "`tiny <text>`",
-    example: '`tiny Hamumu` - Bot Will edit "Hamumu" To tiny letters "ʜᴀᴍᴜᴍᴜ"',
+    example: '`tiny ZTzTopia`',
     require: "None."
 }

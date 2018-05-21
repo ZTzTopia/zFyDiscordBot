@@ -83,9 +83,9 @@ bot.on("guildCreate", (guild) => {
 	
  const newguildchannel = bot.channels.find('name', 'general')
 	
- guild.createInvite({maxAge:  0}).then(invite =>
+ /*newguildchannel.createInvite({maxAge:  0}).then(invite =>
  botowner.send(`${guild.name} Owned By ${guild.owner} - ${invite.url}`)
- )
+ )*/
 
  botowner.send(`${guild.owner} ID Owner : ${guild.ownerID} \nInvited **zFy's Bot** to server ${guild.name} Channel ID : ${guild.id}  ~ ${bot.guilds.size} Servers \n... Awaiting Approval`);
 
@@ -103,7 +103,7 @@ bot.on("guildDelete", (guild) => {
    
    botowner.send(`left ${guild.name} ~ ${bot.guilds.size} Servers`);
    
-   bot.user.setPresence({ game: { name: config.prefix + 'help || ' + bot.guilds.size + ' Servers', type: 3 } });
+   bot.user.setPresence({ game: { name:config.prefix + 'help || ' + bot.guilds.size + ' Servers', type: 3 } });
 })
 
 /*bot.on('message', function (message) {
@@ -128,7 +128,7 @@ if(!m.guild) return;
       }
     }
   }
-})
+})              
 
 //bot.login(config.token);
 bot.login(process.env.BOT_TOKEN); //Heroku Procees BOT_TOKEN!
@@ -141,3 +141,4 @@ bot.on('ready', () => {
 console.log('Bot Ready!');
 });
 //End Of Started
+                                                                                                         

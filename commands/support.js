@@ -5,9 +5,13 @@ module.exports.run = async (bot, msg, args) => {
     setTimeout(function() {
 msg1.delete()
 }, 6000);
-msg.author.send('*Support Server*: ***https://discordbots.org/servers/437876026555760642***')
+msg.author.send('*Support Server*: ***https://discordbots.org/servers/437876026555760642***');
 }
 
 module.exports.help = {
-    name: "support"
+    name: "support",
+    type: "Core",
+    description: 'Send in DMs support servers.',
+    format: "`support`",
+    require: "None."
 }

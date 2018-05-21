@@ -6,18 +6,23 @@ if (msg.mentions.users.array()[0])
     member = msg.guild.members.get(msg.mentions.users.array()[0].id);
 var user = member.user;
 
-var info = new Discord.RichEmbed()
+var ava = new Discord.RichEmbed()
     .setAuthor(user.username + '#' + user.discriminator, user.avatarURL)
     .setColor(member.displayHexColor)
-    .addField(user.username + ' Avatar Link', '[Here](' + user.avatarURL + ')' || 'None', true)
 
-msg.channel.send({ embed: info });
+    if (user.avatarURL != null) {
+        ava.addField(user.username + ' Avatar Link', '[Here](' + user.avatarURL + ')', true);
+    } else {
+        ava.addField(user.username + ' Avatar Link', user.username + ' Not have avatar', true)
+    }
+
+msg.channel.send({ embed: ava });
 }
 
 module.exports.help = {
     name: "avatar",
     type: "Util",
-    Description: 'Provides information about a avatar user.',
+    Description: 'Provides a avatar user.',
     format: "`avatar <mention>`",
     Example: '`avatar` \n`avatar @ZTzTopia`',
     require: "None."

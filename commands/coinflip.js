@@ -7,6 +7,7 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
     name: "coinflip",
+    aliases: "cflip",
     type: "Fun",
     description: "Flip a coin and get Heads or Tails.",
     format: "`coinflip`",

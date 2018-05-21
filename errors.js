@@ -254,3 +254,17 @@ module.exports.noDox = (message, code) => {
 
     message.channel.send(embed).then(m => m.delete(20000));
 }
+
+module.exports.bulkE = (message, code) => {
+    let embed = new Discord.RichEmbed()
+        .setColor(config.red)
+        .addField('Can\'t delete message', config.disagree + ' **' + message.author.tag + '** I Can\'t delete message under 14 days or empty message.')
+        .setFooter(message.author.tag)
+        .setTimestamp();
+
+    if (message.author.avatarURL != null) {
+        embed.setFooter(message.author.tag, message.author.avatarURL)   
+    }
+
+    message.channel.send(embed).then(m => m.delete(20000));
+}

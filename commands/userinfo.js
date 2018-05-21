@@ -67,9 +67,13 @@ info.addField('Game', game, true)
     .addField('Color', member.displayHexColor, true)
     .addField('Highest Role', member.highestRole, true)
     .addField('Hoist Role', hoist, true)
-    .addField('Avatar Link', '[Here](' + user.avatarURL + ')', true)
+    .addField('Avatar Link', 'None', true)
     .addField('Total Roles', roles, true)
     .addField('Roles', ` ${member.roles.map(r => `${r}`).join(', ')}`, true);
+
+    if (msg.member.user.avatarURL != null) {
+        info.addField('Avatar Link', '[Here](' + user.avatarURL + ')', true);
+    }
 
 msg.channel.send({ embed: info });
 }

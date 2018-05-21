@@ -26,23 +26,11 @@ module.exports.run = async (bot, msg, args) => {
         timestr += secs + " Seconds ";
     }
     
-msg.channel.send({
-  embed: {
-  color: msg.guild.me.displayColor,
-
-  title: "Bot Uptime",
-  description: "This is a uptime Bot running!",
-        fields: [{
-        name: "\n\nBot Uptime:",
-        value: "**Uptime**: " + timestr
-      }
-    ],
-    timestamp: new Date(),
-    footer: {
-      text: "©" + bot.user.username
-  }
- }
-});
+  let embed = new Discord.RichEmbed()
+  .setColor(msg.guild.me.displayColor)
+  .setDescription('***Uptime:*** ' + timestr)
+ 
+  return msg.channel.send({embed})
 }
 
 module.exports.help = {
