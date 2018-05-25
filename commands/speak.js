@@ -7,8 +7,8 @@ if (args.length < 1) return errors.noText(msg, `
    **Format**: \`speak <message>\` 
    **Example**: \`speak hello\`
 `)
-
-    msg.channel.send(suffix,{tts:true});
+ 
+    msg.channel.send(suffix, {tts:true});
 }
 
 module.exports.help = {

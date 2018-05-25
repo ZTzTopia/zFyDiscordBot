@@ -1,6 +1,9 @@
 /*ZTzTopia*/
 var Discord = require('discord.js');
 const errors = require('../errors.js');
+const client = require('nekos.life');
+const neko = new client();
+var unirest = require('unirest');
 
 module.exports.run = async (bot, msg, args, suffix) => {
 
@@ -10,7 +13,7 @@ if (args.length < 1) return errors.noText(msg, `
    **Example**: \`8ball I'm Awesome\`
 `);
     
-    var predictions = [
+    /*var predictions = [
         'It is certain',
         'System error',
         '100% Perfect',
@@ -36,27 +39,32 @@ if (args.length < 1) return errors.noText(msg, `
         'Yep you rich!',
         'Outlook not so good',
         'Very doubtful',
-    ];
+    ];*/
 
-    let ball = new Discord.RichEmbed()
+    /*let ball = new Discord.RichEmbed()
     .setColor(msg.guild.me.displayColor)
     .addField(':8ball: 8ball', 'Shaking the ball...')
     .setFooter(`${bot.user.username}#${bot.user.discriminator}`, bot.user.avatarURL)
     .setTimestamp();
              
-    var msg2 = await msg.channel.send({ embed: ball });
-    
-    setTimeout(function() {
+    var msg2 = await msg.channel.send({ embed: ball });*/
+
+//neko.getSFW8Ball().then(balls => {
+    //setTimeout(function() {
         
-        msg2.delete();
+        //msg2.delete();
+        unirest.get('https://nekos.life/api/v2/8ball')
+        .end(balls => {
             let ball2 = new Discord.RichEmbed()
             .setColor(msg.guild.me.displayColor)
-            .addField(':8ball: 8ball', predictions[Math.floor(Math.random() * (predictions.length - 0))])
-            .setFooter(`${bot.user.username}#${bot.user.discriminator}`, bot.user.avatarURL)
+            .setImage(balls.body.url)
+            .addField(':8ball: 8ball', "**"+ balls.body.response+"**"/*predictions[Math.floor(Math.random() * (predictions.length - 0))]*/)
+            .setFooter(`Powered by nekos.life`)
             .setTimestamp();
             
             msg.channel.send({ embed: ball2 });
-}, 800);
+//}, 800);
+    })
 
 }
 

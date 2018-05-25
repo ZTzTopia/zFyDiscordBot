@@ -55,7 +55,7 @@ module.exports.run = async (bot, msg, args) => {
 }
     module.exports.help = {
     name: "channelperms",
-    type: 'Utilities',
+    type: 'Util',
     description: "Provides a users permissions in the specified channel.",
     format: "`channelperms` or `channelperms <mention>`",
     example: '`channelperms @Someone`',

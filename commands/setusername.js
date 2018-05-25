@@ -1,15 +1,25 @@
-var Discord = require('discord.js')
+var Discord = require('discord.js');
+var config = require('../config.json');
+const errors = require('../errors.js');
+
 module.exports.run = async (bot, msg, args, suffix) => {
-    if (args.length < 1) return msg.reply ("<:disagree:424463051824037899> Please enter Name.")
-    if (msg.author.id !== "403032652002754572") return msg.reply("<:disagree:424463051824037899> Only Owner The Bot Can Use This **Commands**")
+
+if (args.length < 1) return errors.noText(msg, `
+   **Description**: Changes the username of the bot.
+   **Format**: \`setUsername <username>\` 
+   **Example**: \`setUsername zFy's\`
+`)
+
+    if (msg.author.id !== config.owner) return errors.ownerBot(msg);
+
     bot.user.setUsername(suffix);
 }
 
 module.exports.help = {
-    name: "setUsername",
+    name: "setusername",
     type: "Owner",
     description: "Changes the username of the bot.",
-    example: '`setUsername Someone` - Bot will change the Nickname to "Someone"' ,
+    example: '`setUsername zFy\'s`' ,
     format: "`setUsername <username>`",
     require: "Owner of the bot."
 }
